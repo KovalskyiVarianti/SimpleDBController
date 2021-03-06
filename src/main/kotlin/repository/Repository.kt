@@ -1,9 +1,10 @@
 package repository
 
-import specification.Specification
+import specification.ReturnableSpecification
 
 interface Repository<T> {
     fun add(item: T)
-    fun remove(specification: Specification)
-    fun query(specification: Specification): List<T>
+    fun remove(id: Int)
+    fun update(item: T)
+    fun query(returnableSpecification: ReturnableSpecification): List<T>
 }

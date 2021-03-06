@@ -1,4 +1,3 @@
 package specification
 
-interface Specification {
-}
+interface Specification
