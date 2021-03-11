@@ -31,10 +31,12 @@ class ClothesSqlRepository(
     override fun showAll(): List<Clothes> =
         collectValues(executeQuery(SelectAllClothesSqlSpecification()))
 
-    override fun <S> query(returnableSpecification: S): List<Clothes>
-            where S : Specification,
-                  S : ReturnableSpecification {
-        val sqlSpecification = castToSqlSpec(returnableSpecification)
+    override fun <S : Specification> query(specification: S) {
+        TODO("Not yet implemented")
+    }
+
+    override fun <S : ReturnableSpecification> query(returnableSpecification: S): List<Clothes> {
+        val sqlSpecification = castToReturnableSqlSpec(returnableSpecification)
         return collectValues(executeQuery(sqlSpecification))
     }
 

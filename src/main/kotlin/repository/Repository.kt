@@ -8,8 +8,8 @@ interface Repository<T> {
     fun remove(id: Int)
     fun update(item: T)
     fun showAll(): List<T>
-    fun <S> query(returnableSpecification: S): List<T>
-            where S : Specification,
-                  S : ReturnableSpecification
+    fun <S : Specification> query(specification: S)
+    fun <S : ReturnableSpecification> query(returnableSpecification: S): List<T>
+
 
 }

@@ -1,3 +1,3 @@
 package specification
 
-interface ReturnableSpecification : Specification
+interface ReturnableSpecification

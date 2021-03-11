@@ -14,6 +14,7 @@ abstract class AbstractSqlRepository<T>(private val connectionProvider: Connecti
     protected fun executeQuery(sqlSpecification: SqlSpecification): ResultSet =
         connectionProvider.getConnection().prepareStatement(sqlSpecification.toSqlQuery()).executeQuery()
 
-    protected fun castToSqlSpec(specification: Specification) = specification as SqlSpecification
+    protected fun castToReturnableSqlSpec(returnableSpecification: ReturnableSpecification) =
+        returnableSpecification as SqlSpecification
 
 }
