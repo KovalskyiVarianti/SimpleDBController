@@ -1,8 +1,8 @@
-package specification
+package specification.sql
 
 import entities.Clothes
 
-inline class InsertClothesSpecification(private val clothes: Clothes) : SqlSpecification {
+class InsertClothesSqlSpecification(private val clothes: Clothes) : SqlSpecification {
     override fun toSqlQuery(): String = "INSERT INTO ${getClothesColumns()} ${getValues(clothes)}"
 
 

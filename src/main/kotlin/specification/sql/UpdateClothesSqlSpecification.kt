@@ -1,8 +1,8 @@
-package specification
+package specification.sql
 
 import entities.Clothes
 
-class UpdateClothesSpecification(private val clothes: Clothes) : SqlSpecification {
+class UpdateClothesSqlSpecification(private val clothes: Clothes) : SqlSpecification {
     override fun toSqlQuery(): String = "UPDATE clothes\n" +
             "SET type = '${clothes.type}'," +
             " category = '${clothes.category}'," +

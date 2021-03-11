@@ -7,4 +7,6 @@ data class Clothes(
     val brand: String,
     val color: String,
     val size: String
-)
+){
+    fun bdRepresentation() = "|\t$id\t|\t$type\t|\t$category\t|\t$brand\t|\t$type\t|\t$color\t|\t$size\t|"
+}
