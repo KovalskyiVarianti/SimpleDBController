@@ -1,4 +1,5 @@
-import specification.file.FileSpecification
+package specification.file
+
 import java.io.File
 
 class DeleteFileSpecification(private val id: Int) : FileSpecification {

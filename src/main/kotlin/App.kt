@@ -9,9 +9,11 @@ object App {
         val rep = getClothRepository()
         val setOfCommands = setOf(
             PrintAllClothesCommand(rep),
+            SelectClothesByKeyCommand(rep),
             InsertClothesCommand(rep),
             UpdateClothesCommand(rep),
             DeleteClothesCommand(rep),
+            DeleteClothesByKeyCommand(rep),
             ExitAppCommand()
         )
         val commandMatcher = CommandMatcher(setOfCommands)
