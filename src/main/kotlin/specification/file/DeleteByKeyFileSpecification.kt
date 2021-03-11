@@ -13,6 +13,5 @@ class DeleteByKeyFileSpecification(private val pair: Pair<String, String>) : Fil
         }
         file.delete()
         temp.renameTo(file)
-
     }
 }

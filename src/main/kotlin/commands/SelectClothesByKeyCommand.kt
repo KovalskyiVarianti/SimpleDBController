@@ -10,9 +10,9 @@ class SelectClothesByKeyCommand(private val repository: ClothesFileRepository) :
 
     override fun execute() {
         println("Please, insert name of column:")
-        val key = (readLine() as String).trim()
+        val key = readLine()!!.trim()
         println("Please, insert value of column:")
-        val value = (readLine() as String).trim()
+        val value = readLine()!!.trim()
         repository.query(SelectByKeyFileSpecification(key to value)).forEach { println(it.bdRepresentation()) }
     }
 }
