@@ -1,5 +1,6 @@
 package repository
 
+import commands.Command
 import specification.ReturnableSpecification
 import specification.Specification
 
@@ -10,6 +11,5 @@ interface Repository<T> {
     fun showAll(): List<T>
     fun <S : Specification> query(specification: S)
     fun <S : ReturnableSpecification> query(returnableSpecification: S): List<T>
-
 
 }

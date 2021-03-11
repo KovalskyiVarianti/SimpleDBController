@@ -1,5 +1,6 @@
-package commands
+package commands.standart
 
+import commands.Command
 import entities.Clothes
 import repository.Repository
 

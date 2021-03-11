@@ -1,5 +1,6 @@
-package commands
+package commands.standart
 
+import commands.Command
 import entities.Clothes
 import repository.Repository
 
@@ -40,5 +41,5 @@ class UpdateClothesCommand(private val repository: Repository<Clothes>) : Comman
             handleCast(readLine()!!)
         }
 
-    private val regex : Regex = Regex("[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
+    private val regex: Regex = Regex("[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
 }

@@ -1,11 +1,11 @@
-package commands
+package commands.file
 
+import commands.Command
 import entities.Clothes
 import repository.Repository
-import repository.file.ClothesFileRepository
 import specification.file.SelectByKeyFileSpecification
 
-class SelectClothesByKeyCommand(private val repository: ClothesFileRepository) : Command {
+class SelectClothesByKeyCommand(private val repository: Repository<Clothes>) : Command {
     override fun commandName(): String = "Select by key"
 
     override fun execute() {
