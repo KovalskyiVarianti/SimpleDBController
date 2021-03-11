@@ -11,7 +11,12 @@ class InsertClothesCommand(private val repository: Repository<Clothes>) : Comman
         println("id, type, category, brand, color, size")
         println("Example:\n1, boots, man, dolce gabbana, white, XXL")
         val input = readLine()
-        val list = input!!.split(",").map { it.trim() }
+        if (!input!!.matches(regex)) {
+            println("Wrong input! Try again")
+            execute()
+            return
+        }
+        val list = input.split(",").map { it.trim() }
         repository.add(
             Clothes(
                 list[0].toInt(),
@@ -24,4 +29,6 @@ class InsertClothesCommand(private val repository: Repository<Clothes>) : Comman
         )
         println("Insertion was successful!")
     }
+
+    private val regex : Regex = Regex("\\d+,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
 }

@@ -8,12 +8,17 @@ class UpdateClothesCommand(private val repository: Repository<Clothes>) : Comman
 
     override fun execute() {
         println("Please, write id of clothes:")
-        val id = readLine()!!.toInt()
+        val id = handleCast(readLine()!!)
         println("Please, fill in all columns")
         println("type, category, brand, color, size")
         println("Example:\nboots, man, dolce gabbana, white, XXL")
         val input = readLine()
-        val list = input!!.split(",")
+        if (!input!!.matches(regex)) {
+            println("Wrong input! Try again")
+            execute()
+            return
+        }
+        val list = input.split(",").map { it.trim() }
         repository.update(
             Clothes(
                 id,
@@ -26,4 +31,14 @@ class UpdateClothesCommand(private val repository: Repository<Clothes>) : Comman
         )
         println("Update was successful!")
     }
+
+    private fun handleCast(string: String): Int =
+        try {
+            string.toInt()
+        } catch (e: NumberFormatException) {
+            println("Please, input valid number")
+            handleCast(readLine()!!)
+        }
+
+    private val regex : Regex = Regex("[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
 }

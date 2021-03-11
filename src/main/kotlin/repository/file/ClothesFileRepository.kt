@@ -37,7 +37,7 @@ class ClothesFileRepository(var file: File = File("default.txt")) : Repository<C
         val mutableList = mutableListOf<Clothes>()
         forEach {
             val list = mutableListOf<String>()
-            val matcher = "=\\w+".toPattern().matcher(it)
+            val matcher = "=[\\w ]+".toPattern().matcher(it)
             while (matcher.find()) {
                 list.add(matcher.group().substringAfter("="))
             }

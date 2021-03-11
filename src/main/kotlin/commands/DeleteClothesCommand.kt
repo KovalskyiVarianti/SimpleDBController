@@ -8,8 +8,17 @@ class DeleteClothesCommand(private val repository: Repository<Clothes>) : Comman
 
     override fun execute() {
         println("Please, write id of clothes:")
-        val id = readLine()!!.toInt()
+        val id = handleCast(readLine()!!)
         repository.remove(id)
         println("Removal was successful!")
     }
+
+    private fun handleCast(string: String): Int =
+        try {
+            string.toInt()
+        } catch (e: NumberFormatException) {
+            println("Please, input valid number")
+            handleCast(readLine()!!)
+        }
+
 }
