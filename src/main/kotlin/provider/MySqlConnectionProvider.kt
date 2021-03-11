@@ -1,4 +1,4 @@
-package repository.provider
+package provider
 
 import java.sql.*
 

@@ -6,7 +6,7 @@ import repository.sql.ClothesSqlRepository
 
 object App {
     fun start() {
-        val rep = getClothRepository()
+        val rep = getClothRepository() as ClothesFileRepository
         val setOfCommands = setOf(
             PrintAllClothesCommand(rep),
             SelectClothesByKeyCommand(rep),

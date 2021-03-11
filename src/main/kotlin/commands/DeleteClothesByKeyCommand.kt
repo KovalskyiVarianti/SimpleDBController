@@ -2,9 +2,10 @@ package commands
 
 import entities.Clothes
 import repository.Repository
+import repository.file.ClothesFileRepository
 import specification.file.DeleteByKeyFileSpecification
 
-class DeleteClothesByKeyCommand(private val repository: Repository<Clothes>):Command {
+class DeleteClothesByKeyCommand(private val repository: ClothesFileRepository):Command {
     override fun commandName(): String = "Delete by key"
 
     override fun execute() {

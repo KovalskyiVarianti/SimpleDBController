@@ -2,8 +2,8 @@ package repository.sql
 
 import entities.Clothes
 import repository.sql.AbstractSqlRepository
-import repository.provider.ConnectionProvider
-import repository.provider.MySqlConnectionProvider
+import provider.ConnectionProvider
+import provider.MySqlConnectionProvider
 import specification.*
 import specification.sql.DeleteClothesByIdSqlSpecification
 import specification.sql.InsertClothesSqlSpecification
@@ -32,7 +32,7 @@ class ClothesSqlRepository(
         collectValues(executeQuery(SelectAllClothesSqlSpecification()))
 
     override fun <S : Specification> query(specification: S) {
-        TODO("Not yet implemented")
+        execute(castToSqlSpec(specification))
     }
 
     override fun <S : ReturnableSpecification> query(returnableSpecification: S): List<Clothes> {

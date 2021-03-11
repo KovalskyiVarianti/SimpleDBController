@@ -1,7 +1,7 @@
 package repository.sql
 
 import repository.Repository
-import repository.provider.ConnectionProvider
+import provider.ConnectionProvider
 import specification.*
 import specification.sql.SqlSpecification
 import java.sql.ResultSet
@@ -17,4 +17,6 @@ abstract class AbstractSqlRepository<T>(private val connectionProvider: Connecti
     protected fun castToReturnableSqlSpec(returnableSpecification: ReturnableSpecification) =
         returnableSpecification as SqlSpecification
 
+    protected fun castToSqlSpec(specification: Specification) =
+        specification as SqlSpecification
 }
