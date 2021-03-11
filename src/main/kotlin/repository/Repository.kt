@@ -1,6 +1,5 @@
 package repository
 
-import commands.Command
 import specification.ReturnableSpecification
 import specification.Specification
 
