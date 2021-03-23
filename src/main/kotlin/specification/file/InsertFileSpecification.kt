@@ -1,6 +1,5 @@
 package specification.file
 
-import entities.Clothes
 import java.io.File
 
 class InsertFileSpecification<T>(private val item: T) : FileSpecification {

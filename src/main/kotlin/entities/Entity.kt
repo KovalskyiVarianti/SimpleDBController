@@ -1,15 +1,6 @@
 package entities
 
-sealed class Entity {
-    abstract fun bdRepresentation(): String
-    fun getFieldsNames() = this.javaClass.declaredFields.map { it.name }
-    fun getValues() = getFieldsNames().map { getValue(it) }
-    fun getValue(property: String) =
-        this::class.members.first {
-            property == it.name
-        }.call(this)
-
-}
+sealed class Entity
 
 data class Clothes(
     val id: Int,
@@ -19,6 +10,18 @@ data class Clothes(
     val color: String,
     val size: String,
 ) : Entity() {
-    override fun bdRepresentation() = toString().substringAfter("(").substringBefore(")")
+    companion object {
+        fun createClothes(list: List<*>): Clothes {
+            val it = list.iterator()
+            return Clothes(
+                it.next().toString().toInt(),
+                it.next() as String,
+                it.next() as String,
+                it.next() as String,
+                it.next() as String,
+                it.next() as String,
+            )
+        }
+        fun getFieldsNames() = Clothes::class.java.declaredFields.map { it.name }.filterNot { it == "Companion" }
+    }
 }
-/*= "|\t$id\t|\t$type\t|\t$category\t|\t$brand\t|\t$type\t|\t$color\t|\t$size\t|"*/

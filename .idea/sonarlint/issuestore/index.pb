@@ -1,8 +1,6 @@
 
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-S
-#src/main/kotlin/entities/Clothes.kt,f\2\f2f5184cb48729818de97b294c6c26609728eb88
 ^
 .src/main/kotlin/specification/Specification.kt,e\8\e8ecdf2eab9dd01b24fbd47ce10ef0ad9b3c7311
 X
@@ -79,3 +77,7 @@ j
 :src/main/kotlin/commands/file/SelectClothesByKeyCommand.kt,1\b\1b11a9c270d374dbbfeba67f11d5078d917b0502
 i
 9src/main/kotlin/commands/standart/UpdateClothesCommand.kt,8\4\849d61da2189adb16d408ecde8bb4d46dcc6e3f1
+R
+"src/main/kotlin/entities/Entity.kt,c\3\c377cc723cbae0d487f51edf753383c33fb01fdc
+X
+(src/main/kotlin/commands/CommandUtils.kt,9\5\95ac11296403d3c5bfbec4190208746d78a5e546

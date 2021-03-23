@@ -2,6 +2,7 @@ import commands.*
 import commands.file.DeleteClothesByKeyCommand
 import commands.file.SelectClothesByKeyCommand
 import commands.standart.*
+import de.vandermeer.asciitable.AsciiTable
 import entities.Clothes
 import repository.Repository
 import repository.file.ClothesFileRepository
@@ -33,8 +34,6 @@ object App {
         is ClothesSqlRepository -> getSqlCommands(rep) + getDefaultCommands(rep)
         else -> getDefaultCommands(rep)
     }
-
-
 
     private fun handleCast(string: String): Int =
         try {

@@ -1,6 +1,8 @@
 package commands.file
 
 import commands.Command
+import commands.readPair
+import de.vandermeer.asciitable.AsciiTable
 import entities.Clothes
 import repository.Repository
 import specification.file.SelectByKeyFileSpecification
@@ -9,10 +11,16 @@ class SelectClothesByKeyCommand(private val repository: Repository<Clothes>) : C
     override fun commandName(): String = "Select by key"
 
     override fun execute() {
-        println("Please, insert name of column:")
-        val key = readLine()!!.trim()
-        println("Please, insert value of column:")
-        val value = readLine()!!.trim()
-        repository.query(SelectByKeyFileSpecification(key to value)).forEach { println(it.bdRepresentation()) }
+        val table = AsciiTable()
+        table.addRule()
+        table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
+        repository.query(SelectByKeyFileSpecification(readPair())).forEach { clothes ->
+            val (id, type, category, brand, color, size) = clothes
+            table.addRule()
+            table.addRow(id.toString(), type, category, brand, color, size)
+        }
+        table.addRule()
+        println(table.render())
+
     }
 }

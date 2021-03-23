@@ -1,6 +1,7 @@
 package commands.standart
 
 import commands.Command
+import commands.readMatch
 import entities.Clothes
 import repository.Repository
 
@@ -11,25 +12,11 @@ class InsertClothesCommand(private val repository: Repository<Clothes>) : Comman
         println("Please, fill in all columns")
         println("id, type, category, brand, color, size")
         println("Example:\n1, boots, man, dolce gabbana, white, XXL")
-        val input = readLine()
-        if (!input!!.matches(regex)) {
-            println("Wrong input! Try again")
-            execute()
-            return
-        }
+        val input = readMatch(regex)
         val list = input.split(",").map { it.trim() }
-        repository.add(
-            Clothes(
-                list[0].toInt(),
-                list[1],
-                list[2],
-                list[3],
-                list[4],
-                list[5],
-            )
-        )
+        repository.add(Clothes.createClothes(list))
         println("Insertion was successful!")
     }
 
-    private val regex : Regex = Regex("\\d+,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
+    private val regex: Regex = Regex("\\d+,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+?,[ ]*[\\w ]+")
 }
