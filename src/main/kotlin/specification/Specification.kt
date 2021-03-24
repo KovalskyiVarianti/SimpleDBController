@@ -1,3 +1,5 @@
 package specification
 
-interface Specification
+import entities.Entity
+
+interface Specification<T:Entity>

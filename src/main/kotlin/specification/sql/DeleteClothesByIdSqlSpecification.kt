@@ -1,5 +1,7 @@
 package specification.sql
 
-class DeleteClothesByIdSqlSpecification(private val id: Int) : SqlSpecification {
+import entities.Entity
+
+class DeleteClothesByIdSqlSpecification<T:Entity>(private val id: Int) : SqlSpecification<T> {
     override fun toSqlQuery(): String = "DELETE FROM clothes WHERE id = $id"
 }

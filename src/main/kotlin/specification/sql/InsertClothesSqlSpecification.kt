@@ -1,8 +1,9 @@
 package specification.sql
-
+/*
 import entities.Clothes
+import entities.Entity
 
-class InsertClothesSqlSpecification(private val clothes: Clothes) : SqlSpecification {
+class InsertClothesSqlSpecification<T:Entity>(private val item: T) : SqlSpecification<T> {
     override fun toSqlQuery(): String = "INSERT INTO ${getClothesColumns()} ${getValues(clothes)}"
 
 
@@ -18,4 +19,4 @@ class InsertClothesSqlSpecification(private val clothes: Clothes) : SqlSpecifica
             ");"
 
 
-}
+}*/

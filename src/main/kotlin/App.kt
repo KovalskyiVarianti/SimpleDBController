@@ -1,12 +1,13 @@
 import commands.*
 import commands.file.DeleteClothesByKeyCommand
 import commands.file.SelectClothesByKeyCommand
+import commands.hashset.SelectClothesByKeyHashSetCommand
 import commands.standart.*
-import de.vandermeer.asciitable.AsciiTable
 import entities.Clothes
+import repository.hashset.ClothesHashSetRepository
 import repository.Repository
 import repository.file.ClothesFileRepository
-import repository.sql.ClothesSqlRepository
+
 
 object App {
     fun start() {
@@ -17,21 +18,26 @@ object App {
 
     private fun getClothRepository(): Repository<Clothes> {
         println("Choose repository:")
-        val repositories = listOf(ClothesSqlRepository(), ClothesFileRepository())
+        val repositories = listOf<Repository<Clothes>>(
+            //ClothesSqlRepository(),
+            ClothesFileRepository(),
+            ClothesHashSetRepository()
+        )
         repositories.forEachIndexed { index, repository ->
             println("${index + 1}. ${repository.javaClass.simpleName}")
         }
         val number = handleCast(readLine()!!)
-        if (number !in 1..repositories.size){
+        if (number !in 1..repositories.size) {
             println("Choose existing one!")
             return getClothRepository()
         }
         return repositories[number - 1]
     }
 
-    private fun getCommands(rep: Repository<Clothes>) = when(rep){
+    private fun getCommands(rep: Repository<Clothes>) = when (rep) {
         is ClothesFileRepository -> getFileCommands(rep) + getDefaultCommands(rep)
-        is ClothesSqlRepository -> getSqlCommands(rep) + getDefaultCommands(rep)
+        //is ClothesSqlRepository -> getSqlCommands(rep) + getDefaultCommands(rep)
+        is ClothesHashSetRepository -> getDefaultCommands(rep) + SelectClothesByKeyHashSetCommand(rep)
         else -> getDefaultCommands(rep)
     }
 

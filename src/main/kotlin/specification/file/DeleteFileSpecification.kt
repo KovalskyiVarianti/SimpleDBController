@@ -1,8 +1,9 @@
 package specification.file
 
+import entities.Entity
 import java.io.File
 
-class DeleteFileSpecification(private val id: Int) : FileSpecification {
+class DeleteFileSpecification<T:Entity>(private val id: Int) : FileSpecification<T> {
     override fun executeAlgorithm(file: File) {
         val temp = File("temp")
         file.forEachLine {

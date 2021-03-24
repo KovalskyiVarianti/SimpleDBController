@@ -1,8 +1,9 @@
 package specification.file
 
+import entities.Entity
 import java.io.File
 
-class UpdateFileSpecification<T>(private val id: Int, private val item: T) : FileSpecification {
+class UpdateFileSpecification<T:Entity>(private val id: Int, private val item: T) : FileSpecification<T> {
     override fun executeAlgorithm(file: File) {
         val temp = File("temp")
         file.forEachLine {

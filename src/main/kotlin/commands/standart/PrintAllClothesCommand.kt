@@ -12,10 +12,9 @@ class PrintAllClothesCommand(private val repository: Repository<Clothes>) : Comm
         val table = AsciiTable()
         table.addRule()
         table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
-        repository.showAll().forEach { clothes ->
-            val (id, type, category, brand, color, size) = clothes
+        repository.showAll().forEach { string ->
             table.addRule()
-            table.addRow(id.toString(), type, category, brand, color, size)
+            table.addRow()
         }
         table.addRule()
         println(table.render())

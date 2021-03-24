@@ -1,7 +1,5 @@
 package commands
 
-import javax.swing.text.html.parser.Entity
-
 fun readPair(): Pair<String, String> {
     println("Please, insert name of column:")
     val key = readLine()!!.trim()

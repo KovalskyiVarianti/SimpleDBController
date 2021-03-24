@@ -2,6 +2,7 @@ package commands.standart
 
 import commands.Command
 import commands.readId
+import commands.readPair
 import entities.Clothes
 import repository.Repository
 
@@ -10,8 +11,8 @@ class DeleteClothesCommand(private val repository: Repository<Clothes>) : Comman
 
     override fun execute() {
         println("Please, write id of clothes:")
-        val id = readId()
-        repository.remove(id)
+        val pair = readPair()
+        repository.remove(pair.first, pair.second)
         println("Removal was successful!")
     }
 

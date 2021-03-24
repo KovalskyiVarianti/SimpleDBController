@@ -1,3 +1,5 @@
 package specification
 
-interface ReturnableSpecification
+import entities.Entity
+
+interface ReturnableSpecification<T:Entity>
