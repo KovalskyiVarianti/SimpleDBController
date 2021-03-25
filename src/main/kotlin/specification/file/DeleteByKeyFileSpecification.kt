@@ -7,7 +7,7 @@ class DeleteByKeyFileSpecification<T:Entity>(private val pair: Pair<String, Stri
     override fun executeAlgorithm(file: File) {
         val temp = File("temp")
         file.forEachLine {
-            if (!it.contains("${pair.first}=${pair.second}")) {
+            if (!it.contains("${pair.first}=${pair.second}[,)]".toRegex())) {
                 temp.appendText("$it\n")
             }
         }

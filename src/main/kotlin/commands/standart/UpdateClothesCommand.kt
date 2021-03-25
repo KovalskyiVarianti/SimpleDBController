@@ -4,6 +4,7 @@ import commands.Command
 import commands.readId
 import commands.readMatch
 import entities.Clothes
+import entities.EntityParser
 import repository.Repository
 
 class UpdateClothesCommand(private val repository: Repository<Clothes>) : Command {
@@ -17,7 +18,7 @@ class UpdateClothesCommand(private val repository: Repository<Clothes>) : Comman
         val input = readMatch(regex)
         val list = input.split(",").map { it.trim() as Any? }.toMutableList()
         list.add(0, id)
-        repository.update(Clothes.createClothes(list))
+        repository.update(EntityParser.parseClothes(list.joinToString(",")))
         println("Update was successful!")
     }
 

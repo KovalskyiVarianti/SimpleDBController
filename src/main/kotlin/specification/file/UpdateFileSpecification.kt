@@ -7,7 +7,7 @@ class UpdateFileSpecification<T:Entity>(private val id: Int, private val item: T
     override fun executeAlgorithm(file: File) {
         val temp = File("temp")
         file.forEachLine {
-            if (it.contains("id=$id")) {
+            if (it.contains("id=$id[,)]".toRegex())) {
                 temp.appendText("$item\n")
             } else {
                 temp.appendText("$it\n")

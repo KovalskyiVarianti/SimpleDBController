@@ -3,6 +3,7 @@ package commands.standart
 import commands.Command
 import commands.readMatch
 import entities.Clothes
+import entities.EntityParser
 import repository.Repository
 
 class InsertClothesCommand(private val repository: Repository<Clothes>) : Command {
@@ -12,9 +13,7 @@ class InsertClothesCommand(private val repository: Repository<Clothes>) : Comman
         println("Please, fill in all columns")
         println("id, type, category, brand, color, size")
         println("Example:\n1, boots, man, dolce gabbana, white, XXL")
-        val input = readMatch(regex)
-        val list = input.split(",").map { it.trim() }
-        repository.add(Clothes.createClothes(list))
+        repository.add(EntityParser.parseClothes(readMatch(regex)))
         println("Insertion was successful!")
     }
 

@@ -15,9 +15,10 @@ class SelectClothesByKeyCommand(private val repository: Repository<Clothes>) : C
         val table = AsciiTable()
         table.addRule()
         table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
-        repository.query(SelectByKeyFileSpecification(readPair())).forEach { string ->
+        repository.query(SelectByKeyFileSpecification(readPair())).forEach { clothes ->
             table.addRule()
-            table.addRow(string.splitToEntity())
+            val (id, type, category, brand, color, size) = clothes
+            table.addRow(id, type, category, brand, color, size)
         }
         table.addRule()
         println(table.render())

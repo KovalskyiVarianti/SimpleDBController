@@ -15,9 +15,10 @@ class SelectClothesByKeyHashSetCommand(private val repository: Repository<Clothe
         val table = AsciiTable()
         table.addRule()
         table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
-        repository.query(SelectByKeyHashSetSpecification(readPair())).forEach { string ->
+        repository.query(SelectByKeyHashSetSpecification(readPair())).forEach { clothes ->
             table.addRule()
-            table.addRow(string.splitToEntity())
+            val (id, type, category, brand, color, size) = clothes
+            table.addRow(id, type, category, brand, color, size)
         }
         table.addRule()
         println(table.render())

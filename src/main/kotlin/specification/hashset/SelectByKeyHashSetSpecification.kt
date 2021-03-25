@@ -6,7 +6,7 @@ class SelectByKeyHashSetSpecification<T:Entity>(private val pair: Pair<String, S
 
     override fun getResult(hashSet: HashSet<T>): List<String> =
         hashSet.toList().filter {
-            it.toString().contains("${pair.first}=${pair.second}", true)
+            it.toString().contains("${pair.first}=${pair.second}[,)]".toRegex())
         }.map { it.toString() }
 }
 

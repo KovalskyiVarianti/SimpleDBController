@@ -17,7 +17,7 @@ object App {
 
     private fun getClothRepository(): Repository<Clothes> {
         println("Choose repository:")
-        val repositories = listOf<Repository<Clothes>>(
+        val repositories = listOf(
             //ClothesSqlRepository(),
             ClothesFileRepository(),
             ClothesHashSetRepository()

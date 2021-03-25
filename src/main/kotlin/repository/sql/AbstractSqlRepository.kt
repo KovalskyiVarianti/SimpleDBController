@@ -1,13 +1,14 @@
 package repository.sql
-
+/*
+import entities.Clothes
 import provider.ConnectionProvider
 import repository.Repository
 import specification.ReturnableSpecification
 import specification.Specification
 import specification.sql.SqlSpecification
 import java.sql.ResultSet
-/*
-abstract class AbstractSqlRepository<T : entities.Entity>(private val connectionProvider: ConnectionProvider) : Repository<T> {
+
+abstract class AbstractSqlRepository(private val connectionProvider: ConnectionProvider) : Repository<Clothes> {
 
     protected fun execute(sqlSpecification: SqlSpecification) =
         connectionProvider.getConnection().prepareStatement(sqlSpecification.toSqlQuery()).execute()

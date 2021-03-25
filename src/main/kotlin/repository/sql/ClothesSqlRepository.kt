@@ -13,10 +13,10 @@ import specification.sql.SelectAllClothesSqlSpecification
 import specification.sql.UpdateClothesSqlSpecification
 import java.sql.ResultSet
 
-class ClothesSqlRepository<T:Entity>(
+class ClothesSqlRepository(
     connectionProvider: ConnectionProvider = MySqlConnectionProvider("mydb")
 ) :
-    AbstractSqlRepository<T>(connectionProvider) {
+    AbstractSqlRepository<Clothes>(connectionProvider) {
 
     override fun add(item: T) {
         execute(InsertClothesSqlSpecification(item))
