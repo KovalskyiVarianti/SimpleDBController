@@ -4,7 +4,7 @@ import specification.ReturnableSpecification
 import specification.Specification
 import javax.swing.text.html.parser.Entity
 
-interface Repository<T> {
+interface Repository<T :Entity> {
     fun add(item: T)
     fun remove(fieldName: String, fieldValue: String)
     fun update(item: T)

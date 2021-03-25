@@ -2,6 +2,7 @@ package commands.file
 
 import commands.Command
 import commands.readPair
+import commands.splitToEntity
 import de.vandermeer.asciitable.AsciiTable
 import entities.Clothes
 import repository.Repository
@@ -16,7 +17,7 @@ class SelectClothesByKeyCommand(private val repository: Repository<Clothes>) : C
         table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
         repository.query(SelectByKeyFileSpecification(readPair())).forEach { string ->
             table.addRule()
-            table.addRow()
+            table.addRow(string.splitToEntity())
         }
         table.addRule()
         println(table.render())

@@ -1,6 +1,7 @@
 package commands.standart
 
 import commands.Command
+import commands.splitToEntity
 import de.vandermeer.asciitable.AsciiTable
 import entities.Clothes
 import repository.Repository
@@ -14,7 +15,7 @@ class PrintAllClothesCommand(private val repository: Repository<Clothes>) : Comm
         table.addRow(Clothes.getFieldsNames().map { it.toUpperCase() })
         repository.showAll().forEach { string ->
             table.addRule()
-            table.addRow()
+            table.addRow(string.splitToEntity())
         }
         table.addRule()
         println(table.render())

@@ -27,3 +27,4 @@ fun readMatch(regex: Regex) : String{
     return input
 }
 
+fun String.splitToEntity() = split(",").map { it.trim() }.map { it.split("=")[1].substringBefore(")")}

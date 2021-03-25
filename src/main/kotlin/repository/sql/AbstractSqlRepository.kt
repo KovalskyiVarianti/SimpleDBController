@@ -6,7 +6,7 @@ import specification.ReturnableSpecification
 import specification.Specification
 import specification.sql.SqlSpecification
 import java.sql.ResultSet
-
+/*
 abstract class AbstractSqlRepository<T : entities.Entity>(private val connectionProvider: ConnectionProvider) : Repository<T> {
 
     protected fun execute(sqlSpecification: SqlSpecification) =
@@ -20,4 +20,4 @@ abstract class AbstractSqlRepository<T : entities.Entity>(private val connection
 
     protected fun castToSqlSpec(specification: Specification<T>) =
         specification as SqlSpecification
-}
+}*/

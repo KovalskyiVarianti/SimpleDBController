@@ -1,5 +1,4 @@
 import commands.*
-import commands.file.DeleteClothesByKeyCommand
 import commands.file.SelectClothesByKeyCommand
 import commands.hashset.SelectClothesByKeyHashSetCommand
 import commands.standart.*
@@ -36,10 +35,10 @@ object App {
 
     private fun getCommands(rep: Repository<Clothes>) = when (rep) {
         is ClothesFileRepository -> getFileCommands(rep) + getDefaultCommands(rep)
-        //is ClothesSqlRepository -> getSqlCommands(rep) + getDefaultCommands(rep)
         is ClothesHashSetRepository -> getDefaultCommands(rep) + SelectClothesByKeyHashSetCommand(rep)
         else -> getDefaultCommands(rep)
     }
+    //is ClothesSqlRepository -> getSqlCommands(rep) + getDefaultCommands(rep)
 
     private fun handleCast(string: String): Int =
         try {
@@ -52,8 +51,7 @@ object App {
     private fun getSqlCommands(rep: Repository<Clothes>) = setOf<Command>()
 
     private fun getFileCommands(rep: Repository<Clothes>) = setOf(
-        SelectClothesByKeyCommand(rep),
-        DeleteClothesByKeyCommand(rep)
+        SelectClothesByKeyCommand(rep)
     )
 
     private fun getDefaultCommands(rep: Repository<Clothes>) = setOf(
